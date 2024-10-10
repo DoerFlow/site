@@ -1,0 +1,164 @@
+:root {
+  --df-bg: #0b1120;
+  --df-surface: #141b2d;
+  --df-elevated: #1a2235;
+  --df-primary: #00d4aa;
+  --df-purple: #7c3aed;
+  --df-border: rgba(255, 255, 255, 0.08);
+  --df-text: #e7ecf3;
+  --df-muted: #8b97ad;
+}
+
+* {
+  box-sizing: border-box;
+}
+
+html,
+body {
+  margin: 0;
+  padding: 0;
+  background-color: var(--df-bg);
+  color: var(--df-text);
+  font-family: var(--font-inter), "PingFang SC", "Microsoft YaHei", sans-serif;
+  scroll-behavior: smooth;
+  -webkit-font-smoothing: antialiased;
+}
+
+::selection {
+  background: rgba(0, 212, 170, 0.3);
+}
+
+::-webkit-scrollbar {
+  width: 10px;
+  height: 10px;
+}
+::-webkit-scrollbar-track {
+  background: var(--df-bg);
+}
+::-webkit-scrollbar-thumb {
+  background: #2a3550;
+  border-radius: 6px;
+}
+::-webkit-scrollbar-thumb:hover {
+  background: #36436a;
+}
+
+.df-section {
+  position: relative;
+  padding: 96px 24px;
+  max-width: 1240px;
+  margin: 0 auto;
+}
+@media (max-width: 768px) {
+  .df-section {
+    padding: 64px 16px;
+  }
+}
+
+.df-anchor {
+  scroll-margin-top: 80px;
+}
+
+.df-glass {
+  background: linear-gradient(
+    180deg,
+    rgba(26, 34, 53, 0.85) 0%,
+    rgba(20, 27, 45, 0.7) 100%
+  );
+  border: 1px solid var(--df-border);
+  backdrop-filter: blur(12px);
+  border-radius: 16px;
+}
+
+.df-glass-hover {
+  transition: transform 0.25s ease, border-color 0.25s ease, box-shadow 0.25s ease;
+}
+.df-glass-hover:hover {
+  transform: translateY(-4px);
+  border-color: rgba(0, 212, 170, 0.45);
+  box-shadow: 0 18px 40px -18px rgba(0, 212, 170, 0.35);
+}
+
+.df-gradient-text {
+  background: linear-gradient(90deg, #00d4aa 0%, #56e0c6 50%, #7c3aed 120%);
+  -webkit-background-clip: text;
+  background-clip: text;
+  -webkit-text-fill-color: transparent;
+  color: transparent;
+}
+
+.df-eyebrow {
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  font-size: 12px;
+  font-weight: 600;
+  letter-spacing: 0.14em;
+  text-transform: uppercase;
+  color: var(--df-primary);
+  padding: 6px 14px;
+  border-radius: 999px;
+  border: 1px solid rgba(0, 212, 170, 0.25);
+  background: rgba(0, 212, 170, 0.08);
+}
+
+.df-cn {
+  color: var(--df-muted);
+  font-size: 15px;
+  line-height: 1.7;
+}
+
+.df-hero-bg {
+  position: absolute;
+  inset: 0;
+  overflow: hidden;
+  pointer-events: none;
+}
+.df-hero-bg::before {
+  content: "";
+  position: absolute;
+  top: -20%;
+  left: 50%;
+  transform: translateX(-50%);
+  width: 900px;
+  height: 900px;
+  background: radial-gradient(
+    circle,
+    rgba(0, 212, 170, 0.16) 0%,
+    rgba(124, 58, 237, 0.1) 38%,
+    transparent 70%
+  );
+  filter: blur(20px);
+}
+
+.df-grid-overlay {
+  position: absolute;
+  inset: 0;
+  background-image: linear-gradient(rgba(255, 255, 255, 0.04) 1px, transparent 1px),
+    linear-gradient(90deg, rgba(255, 255, 255, 0.04) 1px, transparent 1px);
+  background-size: 56px 56px;
+  mask-image: radial-gradient(ellipse 70% 60% at 50% 35%, #000 35%, transparent 75%);
+  -webkit-mask-image: radial-gradient(ellipse 70% 60% at 50% 35%, #000 35%, transparent 75%);
+}
+
+.df-section-divider {
+  height: 1px;
+  width: 100%;
+  max-width: 1240px;
+  margin: 0 auto;
+  background: linear-gradient(
+    90deg,
+    transparent,
+    rgba(255, 255, 255, 0.12),
+    transparent
+  );
+}
+
+.df-link {
+  color: var(--df-muted);
+  text-decoration: none;
+  transition: color 0.2s ease;
+}
+.df-link:hover {
+  color: var(--df-primary);
+}

@@ -4,9 +4,9 @@
   "private": true,
   "description": "DoerFlow official website — doerflow.dev",
   "scripts": {
-    "dev": "next dev --port 3000",
+    "dev": "next dev --port 13010",
     "build": "next build",
-    "start": "next start",
+    "start": "next start --port 13010",
     "check": "biome check .",
     "format": "biome check --write ."
   },

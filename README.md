@@ -12,7 +12,7 @@ DoerFlow 品牌官网，部署域名 **[doerflow.dev](https://doerflow.dev)**。
 
 ```bash
 pnpm install
-pnpm dev    # http://localhost:3000
+pnpm dev    # http://localhost:13010
 ```
 
 ## 仓库关系

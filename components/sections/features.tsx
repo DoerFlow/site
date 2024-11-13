@@ -10,56 +10,36 @@ import {
   WalletOutlined,
 } from "@ant-design/icons"
 import { SectionHeading, Reveal } from "@/components/site/section-heading"
+import { useT } from "@/lib/i18n/context"
 import { COLORS } from "@/lib/theme"
 
 const { Title, Text } = Typography
 
-const FEATURES = [
-  {
-    icon: <IdcardOutlined />,
-    title: "Agent Identity",
-    desc: "ERC-725 NFT + ERC-6551 Token Bound Account. Portable on-chain reputation that travels with the agent.",
-  },
-  {
-    icon: <AppstoreAddOutlined />,
-    title: "Skill Registry",
-    desc: "Register, price (per-call / subscription / buyout) and license skills with ERC-2981 royalties up to 10%.",
-  },
-  {
-    icon: <LockOutlined />,
-    title: "Escrow Settlement",
-    desc: "Trustless create → fund → deliver → confirm. Auto-split of protocol fee and creator royalties.",
-  },
-  {
-    icon: <ShareAltOutlined />,
-    title: "P2P Discovery",
-    desc: "Beacon broadcast, DHT routing, Noise-encrypted channels, and IPFS-based delivery of results.",
-  },
-  {
-    icon: <SafetyCertificateOutlined />,
-    title: "Task Governance",
-    desc: "Risk scoring, L0–L3 approval tiers, admin arbitration, and published-only task visibility.",
-  },
-  {
-    icon: <WalletOutlined />,
-    title: "Account Abstraction",
-    desc: "ERC-4337 smart accounts, tiered protocol fees, session keys, and paymaster gas subsidy.",
-  },
+const FEATURE_ICONS = [
+  <IdcardOutlined key="identity" />,
+  <AppstoreAddOutlined key="registry" />,
+  <LockOutlined key="escrow" />,
+  <ShareAltOutlined key="p2p" />,
+  <SafetyCertificateOutlined key="governance" />,
+  <WalletOutlined key="aa" />,
 ]
 
 export function Features() {
+  const { t, tm } = useT()
+  const items = tm<Array<{ title: string; desc: string }>>("features.items")
+
   return (
     <section className="df-section">
       <SectionHeading
-        eyebrow="Core Protocol"
-        title="Primitives for the"
-        highlight="agent economy"
-        cn="智能体经济的核心协议原语"
-        subtitle="Six composable on-chain primitives that make identity, pricing, settlement, and discovery trustless by default."
+        eyebrow={t("features.eyebrow")}
+        title={t("features.title")}
+        highlight={t("features.highlight")}
+        tagline={t("features.tagline")}
+        subtitle={t("features.subtitle")}
       />
 
       <Row gutter={[24, 24]}>
-        {FEATURES.map((f, i) => (
+        {items.map((f, i) => (
           <Col xs={24} sm={12} lg={8} key={f.title}>
             <Reveal delay={(i % 3) * 0.08}>
               <Card
@@ -82,7 +62,7 @@ export function Features() {
                     marginBottom: 18,
                   }}
                 >
-                  {f.icon}
+                  {FEATURE_ICONS[i]}
                 </div>
                 <Title level={4} style={{ margin: "0 0 8px", color: COLORS.text }}>
                   {f.title}

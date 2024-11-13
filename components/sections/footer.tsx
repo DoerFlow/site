@@ -1,51 +1,58 @@
 "use client"
 
+import { useMemo } from "react"
 import { Row, Col, Typography } from "antd"
 import { Logo } from "@/components/site/logo"
+import { useT } from "@/lib/i18n/context"
 import { COLORS } from "@/lib/theme"
 
 const { Text } = Typography
 
-const COLUMNS = [
-  {
-    title: "Product",
-    links: [
-      { label: "Wallet App", href: "#products" },
-      { label: "Worker App", href: "#products" },
-      { label: "Creator DApp", href: "#products" },
-      { label: "Admin Console", href: "#products" },
-    ],
-  },
-  {
-    title: "Protocol",
-    links: [
-      { label: "Architecture", href: "#protocol" },
-      { label: "Economy & Fees", href: "#economy" },
-      { label: "Use Cases", href: "#use-cases" },
-      { label: "Roadmap", href: "#" },
-    ],
-  },
-  {
-    title: "Developers",
-    links: [
-      { label: "Docs", href: "https://doerflow.dev/docs" },
-      { label: "GitHub", href: "https://github.com/doerflow" },
-      { label: "Open API", href: "#developers" },
-      { label: "SDKs", href: "#developers" },
-    ],
-  },
-  {
-    title: "Company",
-    links: [
-      { label: "LuminaryWorks", href: "#ecosystem" },
-      { label: "Privacy", href: "#" },
-      { label: "Terms", href: "#" },
-      { label: "doerflow.dev", href: "https://doerflow.dev" },
-    ],
-  },
-]
-
 export function Footer() {
+  const { t } = useT()
+
+  const columns = useMemo(
+    () => [
+      {
+        title: t("footer.columns.product.title"),
+        links: [
+          { label: t("footer.columns.product.links.walletApp"), href: "#products" },
+          { label: t("footer.columns.product.links.workerApp"), href: "#products" },
+          { label: t("footer.columns.product.links.creatorDapp"), href: "#products" },
+          { label: t("footer.columns.product.links.adminConsole"), href: "#products" },
+        ],
+      },
+      {
+        title: t("footer.columns.protocol.title"),
+        links: [
+          { label: t("footer.columns.protocol.links.architecture"), href: "#protocol" },
+          { label: t("footer.columns.protocol.links.economyFees"), href: "#economy" },
+          { label: t("footer.columns.protocol.links.useCases"), href: "#use-cases" },
+          { label: t("footer.columns.protocol.links.roadmap"), href: "#" },
+        ],
+      },
+      {
+        title: t("footer.columns.developers.title"),
+        links: [
+          { label: t("footer.columns.developers.links.docs"), href: "https://doerflow.dev/docs" },
+          { label: t("footer.columns.developers.links.github"), href: "https://github.com/doerflow" },
+          { label: t("footer.columns.developers.links.openApi"), href: "#developers" },
+          { label: t("footer.columns.developers.links.sdks"), href: "#developers" },
+        ],
+      },
+      {
+        title: t("footer.columns.company.title"),
+        links: [
+          { label: t("footer.columns.company.links.luminaryWorks"), href: "#ecosystem" },
+          { label: t("footer.columns.company.links.privacy"), href: "#" },
+          { label: t("footer.columns.company.links.terms"), href: "#" },
+          { label: t("footer.columns.company.links.doerflowDev"), href: "https://doerflow.dev" },
+        ],
+      },
+    ],
+    [t],
+  )
+
   return (
     <footer style={{ borderTop: `1px solid ${COLORS.border}`, background: "rgba(10,15,28,0.6)" }}>
       <div className="df-section" style={{ paddingTop: 56, paddingBottom: 40 }}>
@@ -53,13 +60,12 @@ export function Footer() {
           <Col xs={24} md={8}>
             <Logo size={32} />
             <p style={{ color: COLORS.muted, marginTop: 16, maxWidth: 280, lineHeight: 1.6 }}>
-              The Liquidity Protocol for Autonomous Agents. Agents are digital labor. Skills are digital
-              capital.
+              {t("footer.tagline")}
             </p>
-            <p className="df-cn" style={{ marginTop: 4 }}>自主执行体的价值流动协议</p>
+            <p className="df-cn" style={{ marginTop: 4 }}>{t("footer.subtitle")}</p>
           </Col>
 
-          {COLUMNS.map((c) => (
+          {columns.map((c) => (
             <Col xs={12} sm={6} md={4} key={c.title}>
               <Text style={{ color: COLORS.text, fontWeight: 600, display: "block", marginBottom: 14 }}>
                 {c.title}
@@ -95,10 +101,10 @@ export function Footer() {
           }}
         >
           <Text style={{ color: COLORS.muted, fontSize: 13 }}>
-            © 2026 DoerFlow · github.com/doerflow
+            {t("footer.copyright")}
           </Text>
           <Text style={{ color: COLORS.muted, fontSize: 13 }}>
-            Part of the LuminaryWorks AI ecosystem · The Earn pillar
+            {t("footer.ecosystemLine")}
           </Text>
         </div>
       </div>

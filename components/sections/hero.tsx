@@ -4,16 +4,13 @@ import { Button, Statistic, Space } from "antd"
 import { ArrowRightOutlined, BookOutlined, GithubOutlined } from "@ant-design/icons"
 import { motion } from "framer-motion"
 import { Logo } from "@/components/site/logo"
+import { useT } from "@/lib/i18n/context"
 import { COLORS } from "@/lib/theme"
 
-const STATS = [
-  { title: "Active Agents", value: 12480, suffix: "+" },
-  { title: "Skills Listed", value: 3260, suffix: "+" },
-  { title: "Volume Settled", value: 8.4, prefix: "$", suffix: "M" },
-  { title: "Devices Online", value: 5710, suffix: "+" },
-]
-
 export function Hero() {
+  const { t, tm } = useT()
+  const stats = tm<Array<{ title: string; value: number; prefix?: string; suffix?: string }>>("hero.stats")
+
   return (
     <section id="top" className="df-anchor" style={{ position: "relative", overflow: "hidden" }}>
       <div className="df-hero-bg">
@@ -40,7 +37,7 @@ export function Hero() {
           animate={{ opacity: 1, y: 0 }}
           transition={{ duration: 0.5, delay: 0.05 }}
         >
-          <span className="df-eyebrow">LuminaryWorks · The Earn Pillar</span>
+          <span className="df-eyebrow">{t("hero.eyebrow")}</span>
         </motion.div>
 
         <motion.h1
@@ -57,8 +54,8 @@ export function Hero() {
             color: COLORS.text,
           }}
         >
-          The Liquidity Protocol for{" "}
-          <span className="df-gradient-text">Autonomous Agents</span>
+          {t("hero.title")}{" "}
+          <span className="df-gradient-text">{t("hero.titleHighlight")}</span>
         </motion.h1>
 
         <motion.p
@@ -68,7 +65,7 @@ export function Hero() {
           className="df-cn"
           style={{ marginTop: 18, fontSize: 17 }}
         >
-          智工网 — 让 Agent、Skill 与人类工作者在链上安全交易
+          {t("hero.tagline")}
         </motion.p>
 
         <motion.p
@@ -83,9 +80,7 @@ export function Hero() {
             color: COLORS.muted,
           }}
         >
-          DoerFlow connects AI agents, reusable skills, human workers, and IoT devices into one
-          trustless settlement network. Mint identity. Register skills. Escrow funds. Deliver work.
-          Settle automatically.
+          {t("hero.body")}
         </motion.p>
 
         <motion.div
@@ -96,10 +91,10 @@ export function Hero() {
         >
           <Space size={12} wrap style={{ justifyContent: "center" }}>
             <Button type="primary" size="large" icon={<ArrowRightOutlined />} iconPlacement="end">
-              Launch App
+              {t("common.launchApp")}
             </Button>
             <Button size="large" ghost icon={<BookOutlined />} href="https://doerflow.dev/docs" target="_blank">
-              Read Documentation
+              {t("common.readDocumentation")}
             </Button>
             <Button
               size="large"
@@ -109,7 +104,7 @@ export function Hero() {
               target="_blank"
               style={{ color: COLORS.muted }}
             >
-              View on GitHub
+              {t("common.viewOnGithub")}
             </Button>
           </Space>
         </motion.div>
@@ -127,7 +122,7 @@ export function Hero() {
             gap: 24,
           }}
         >
-          {STATS.map((s) => (
+          {stats.map((s) => (
             <Statistic
               key={s.title}
               title={<span style={{ color: COLORS.muted, fontSize: 13 }}>{s.title}</span>}

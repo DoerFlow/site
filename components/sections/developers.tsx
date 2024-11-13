@@ -3,41 +3,29 @@
 import { Row, Col, Card, Typography, Button, Space, Tag } from "antd"
 import { CodeOutlined, ApiOutlined, CloudServerOutlined, BookOutlined, GithubOutlined } from "@ant-design/icons"
 import { SectionHeading, Reveal } from "@/components/site/section-heading"
+import { useT } from "@/lib/i18n/context"
 import { COLORS } from "@/lib/theme"
 
 const { Title, Text } = Typography
 
-const SDKS = [
-  {
-    icon: <CodeOutlined />,
-    title: "Agent Trading SDK",
-    desc: "Integrate agent trading directly into your stack without building a full app.",
-  },
-  {
-    icon: <CloudServerOutlined />,
-    title: "IoT SDK",
-    desc: "BYOD device registration, telemetry streaming, and stablecoin 收款 for connected hardware.",
-  },
-  {
-    icon: <ApiOutlined />,
-    title: "Open API",
-    desc: "NestJS REST API on port 13008 with full Swagger documentation.",
-  },
-]
+const SDK_ICONS = [<CodeOutlined key="trading" />, <CloudServerOutlined key="iot" />, <ApiOutlined key="api" />]
 
 export function Developers() {
+  const { t, tm } = useT()
+  const sdks = tm<Array<{ title: string; desc: string }>>("developers.sdks")
+
   return (
     <section id="developers" className="df-anchor df-section">
       <SectionHeading
-        eyebrow="For Developers"
-        title="Build on the protocol,"
-        highlight="not just the apps"
-        cn="面向开发者：SDK 与开放 API，直接接入协议"
-        subtitle="Ship agent-native integrations with first-class SDKs and an open, documented REST API."
+        eyebrow={t("developers.eyebrow")}
+        title={t("developers.title")}
+        highlight={t("developers.highlight")}
+        tagline={t("developers.tagline")}
+        subtitle={t("developers.subtitle")}
       />
 
       <Row gutter={[24, 24]}>
-        {SDKS.map((s, i) => (
+        {sdks.map((s, i) => (
           <Col xs={24} md={8} key={s.title}>
             <Reveal delay={i * 0.08}>
               <Card className="df-glass df-glass-hover" variant="borderless" style={{ height: "100%" }} styles={{ body: { padding: 28 } }}>
@@ -55,7 +43,7 @@ export function Developers() {
                     marginBottom: 16,
                   }}
                 >
-                  {s.icon}
+                  {SDK_ICONS[i]}
                 </div>
                 <Title level={4} style={{ margin: "0 0 8px", color: COLORS.text }}>
                   {s.title}
@@ -82,19 +70,19 @@ export function Developers() {
         >
           <div>
             <Tag color="cyan" style={{ background: "rgba(0,212,170,0.12)", borderColor: "rgba(0,212,170,0.3)", color: COLORS.primary }}>
-              REST · port 13008
+              {t("developers.restTag")}
             </Tag>
             <Title level={4} style={{ margin: "10px 0 0", color: COLORS.text }}>
-              Start integrating today
+              {t("developers.startIntegrating")}
             </Title>
-            <Text style={{ color: COLORS.muted }}>Read the docs and explore the source on GitHub.</Text>
+            <Text style={{ color: COLORS.muted }}>{t("developers.startIntegratingDesc")}</Text>
           </div>
           <Space wrap>
             <Button type="primary" size="large" icon={<BookOutlined />} href="https://doerflow.dev/docs" target="_blank">
-              Read Docs
+              {t("common.readDocs")}
             </Button>
             <Button size="large" ghost icon={<GithubOutlined />} href="https://github.com/doerflow/docs" target="_blank">
-              GitHub
+              {t("common.github")}
             </Button>
           </Space>
         </div>

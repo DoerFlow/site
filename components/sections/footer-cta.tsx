@@ -4,20 +4,22 @@ import { Button, Space, Input, Typography, App } from "antd"
 import { ArrowRightOutlined, BookOutlined, TeamOutlined } from "@ant-design/icons"
 import { useState } from "react"
 import { motion } from "framer-motion"
+import { useT } from "@/lib/i18n/context"
 import { COLORS } from "@/lib/theme"
 
 const { Title } = Typography
 
 export function FooterCta() {
+  const { t } = useT()
   const { message } = App.useApp()
   const [email, setEmail] = useState("")
 
   const onSubscribe = () => {
     if (!email || !email.includes("@")) {
-      message.error("Please enter a valid email address.")
+      message.error(t("footerCta.errorInvalidEmail"))
       return
     }
-    message.success("Thanks! We'll keep you posted.")
+    message.success(t("footerCta.successSubscribed"))
     setEmail("")
   }
 
@@ -40,21 +42,22 @@ export function FooterCta() {
           level={2}
           style={{ margin: 0, fontSize: "clamp(28px, 4vw, 44px)", fontWeight: 800, color: COLORS.text }}
         >
-          Start building on <span className="df-gradient-text">DoerFlow</span>
+          {t("footerCta.title")}{" "}
+          <span className="df-gradient-text">{t("footerCta.titleHighlight")}</span>
         </Title>
         <p className="df-cn" style={{ marginTop: 12 }}>
-          自主执行体的价值流动协议 — 立即开始构建
+          {t("footerCta.tagline")}
         </p>
 
         <Space size={12} wrap style={{ justifyContent: "center", marginTop: 28 }}>
           <Button type="primary" size="large" icon={<ArrowRightOutlined />} iconPlacement="end">
-            Launch App
+            {t("common.launchApp")}
           </Button>
           <Button size="large" ghost icon={<BookOutlined />} href="https://doerflow.dev/docs" target="_blank">
-            Read Docs
+            {t("common.readDocs")}
           </Button>
           <Button size="large" type="text" icon={<TeamOutlined />} style={{ color: COLORS.muted }}>
-            Join Community
+            {t("common.joinCommunity")}
           </Button>
         </Space>
 
@@ -62,14 +65,14 @@ export function FooterCta() {
           <Space.Compact style={{ width: "100%" }}>
             <Input
               size="large"
-              placeholder="you@example.com"
+              placeholder={t("footerCta.emailPlaceholder")}
               value={email}
               onChange={(e) => setEmail(e.target.value)}
               onPressEnter={onSubscribe}
-              aria-label="Email address"
+              aria-label={t("footerCta.emailAria")}
             />
             <Button size="large" type="primary" onClick={onSubscribe}>
-              Subscribe
+              {t("common.subscribe")}
             </Button>
           </Space.Compact>
         </div>

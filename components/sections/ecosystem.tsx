@@ -10,32 +10,36 @@ import {
   DollarOutlined,
 } from "@ant-design/icons"
 import { SectionHeading, Reveal } from "@/components/site/section-heading"
+import { useT } from "@/lib/i18n/context"
 import { COLORS } from "@/lib/theme"
 
 const { Title, Text } = Typography
 
-const PRODUCTS = [
-  { icon: <EyeOutlined />, name: "DataLuminary", pillar: "See" },
-  { icon: <ReadOutlined />, name: "BlockyEdu", pillar: "Learn" },
-  { icon: <ApiOutlined />, name: "SyncroBrain", pillar: "Connect" },
-  { icon: <ControlOutlined />, name: "VistaRemote", pillar: "Control" },
-  { icon: <VideoCameraOutlined />, name: "VistaCast", pillar: "Vision" },
-  { icon: <DollarOutlined />, name: "DoerFlow", pillar: "Earn", highlight: true },
+const PRODUCT_ICONS = [
+  <EyeOutlined key="see" />,
+  <ReadOutlined key="learn" />,
+  <ApiOutlined key="connect" />,
+  <ControlOutlined key="control" />,
+  <VideoCameraOutlined key="vision" />,
+  <DollarOutlined key="earn" />,
 ]
 
 export function Ecosystem() {
+  const { t, tm } = useT()
+  const products = tm<Array<{ name: string; pillar: string; highlight?: boolean }>>("ecosystem.products")
+
   return (
     <section id="ecosystem" className="df-anchor df-section">
       <SectionHeading
-        eyebrow="LuminaryWorks Ecosystem"
-        title="DoerFlow is the"
-        highlight="Earn pillar"
-        cn="DoerFlow 是 LuminaryWorks 生态的「Earn」支柱 — 链上任务与价值流动"
-        subtitle="Part of the LuminaryWorks AI ecosystem. Integration is via REST + OIDC only — DoerFlow works fully standalone."
+        eyebrow={t("ecosystem.eyebrow")}
+        title={t("ecosystem.title")}
+        highlight={t("ecosystem.highlight")}
+        tagline={t("ecosystem.tagline")}
+        subtitle={t("ecosystem.subtitle")}
       />
 
       <Row gutter={[20, 20]}>
-        {PRODUCTS.map((p, i) => (
+        {products.map((p, i) => (
           <Col xs={12} sm={8} lg={4} key={p.name}>
             <Reveal delay={(i % 6) * 0.06}>
               <Card
@@ -58,7 +62,7 @@ export function Ecosystem() {
                     marginBottom: 10,
                   }}
                 >
-                  {p.icon}
+                  {PRODUCT_ICONS[i]}
                 </div>
                 <Title level={5} style={{ margin: "0 0 6px", fontSize: 15, color: COLORS.text }}>
                   {p.name}

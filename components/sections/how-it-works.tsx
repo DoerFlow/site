@@ -1,5 +1,6 @@
 "use client"
 
+import type { ReactNode } from "react"
 import { Steps, Tabs, Card, Typography, Grid } from "antd"
 import {
   WalletOutlined,
@@ -12,51 +13,40 @@ import {
   ApiOutlined,
 } from "@ant-design/icons"
 import { SectionHeading, Reveal } from "@/components/site/section-heading"
+import { useT } from "@/lib/i18n/context"
 import { COLORS } from "@/lib/theme"
 
 const { Paragraph, Text } = Typography
 const { useBreakpoint } = Grid
 
-const STEPS = [
-  { title: "Mint Identity", description: "Connect wallet & mint your Agent NFT", icon: <WalletOutlined /> },
-  { title: "Register Skills", description: "Register skills & set pricing", icon: <AppstoreAddOutlined /> },
-  { title: "Escrow Task", description: "Consumer creates task & locks funds", icon: <LockOutlined /> },
-  { title: "Execute & Prove", description: "Agent / human / device submits proof", icon: <FileDoneOutlined /> },
-  { title: "Settle On-chain", description: "Verification triggers auto-settlement", icon: <CheckCircleOutlined /> },
+const STEP_ICONS = [
+  <WalletOutlined key="mint" />,
+  <AppstoreAddOutlined key="register" />,
+  <LockOutlined key="escrow" />,
+  <FileDoneOutlined key="prove" />,
+  <CheckCircleOutlined key="settle" />,
 ]
 
-const FLOWS = [
-  {
-    key: "agent",
-    label: "Agent Tasks",
-    icon: <RobotOutlined />,
-    text: "Agents auto-claim tasks when the offered price is at or below their configured threshold. Execution, proof submission, and settlement happen with zero human intervention.",
-  },
-  {
-    key: "human",
-    label: "Human Tasks",
-    icon: <TeamOutlined />,
-    text: "Workers voluntarily accept crowdsourcing and social-platform tasks via the Worker App, submit delivery proof, and the publisher verifies before escrow releases payout.",
-  },
-  {
-    key: "iot",
-    label: "IoT Payments",
-    icon: <ApiOutlined />,
-    text: "Devices settle directly with each other in stablecoins — an EV locks funds with a charging station, charges, and settles automatically in USDC on completion.",
-  },
-]
+const FLOW_ICONS: Record<string, ReactNode> = {
+  agent: <RobotOutlined />,
+  human: <TeamOutlined />,
+  iot: <ApiOutlined />,
+}
 
 export function HowItWorks() {
+  const { t, tm } = useT()
   const screens = useBreakpoint()
+  const steps = tm<Array<{ title: string; description: string }>>("howItWorks.steps")
+  const flows = tm<Array<{ key: string; label: string; text: string }>>("howItWorks.flows")
 
   return (
     <section className="df-section">
       <SectionHeading
-        eyebrow="How It Works"
-        title="From identity to"
-        highlight="automatic settlement"
-        cn="从身份铸造到链上自动结算的完整流程"
-        subtitle="Five steps take a task from creation to trustless settlement — with royalties distributed automatically."
+        eyebrow={t("howItWorks.eyebrow")}
+        title={t("howItWorks.title")}
+        highlight={t("howItWorks.highlight")}
+        tagline={t("howItWorks.tagline")}
+        subtitle={t("howItWorks.subtitle")}
       />
 
       <Reveal>
@@ -64,7 +54,7 @@ export function HowItWorks() {
           <Steps
             current={-1}
             orientation={screens.lg ? "horizontal" : "vertical"}
-            items={STEPS.map((s) => ({
+            items={steps.map((s, i) => ({
               title: <span style={{ color: COLORS.text, fontWeight: 600 }}>{s.title}</span>,
               content: <span style={{ color: COLORS.muted }}>{s.description}</span>,
               icon: (
@@ -80,7 +70,7 @@ export function HowItWorks() {
                     color: COLORS.primary,
                   }}
                 >
-                  {s.icon}
+                  {STEP_ICONS[i]}
                 </span>
               ),
             }))}
@@ -91,16 +81,16 @@ export function HowItWorks() {
       <Reveal delay={0.1}>
         <div style={{ marginTop: 40, maxWidth: 860, marginInline: "auto" }}>
           <Text style={{ color: COLORS.muted, display: "block", marginBottom: 12, textAlign: "center" }}>
-            Three settlement flows, one protocol
+            {t("howItWorks.flowsLabel")}
           </Text>
           <Card className="df-glass" variant="borderless" styles={{ body: { padding: 28 } }}>
             <Tabs
               centered
-              items={FLOWS.map((f) => ({
+              items={flows.map((f) => ({
                 key: f.key,
                 label: (
                   <span style={{ display: "inline-flex", alignItems: "center", gap: 8 }}>
-                    {f.icon} {f.label}
+                    {FLOW_ICONS[f.key]} {f.label}
                   </span>
                 ),
                 children: (

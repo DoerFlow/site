@@ -1,6 +1,11 @@
+"use client"
+
 import { COLORS } from "@/lib/theme"
+import { useT } from "@/lib/i18n/context"
 
 export function Logo({ size = 30, withText = true }: { size?: number; withText?: boolean }) {
+  const { t } = useT()
+
   return (
     <div style={{ display: "inline-flex", alignItems: "center", gap: 10 }}>
       <svg
@@ -8,7 +13,7 @@ export function Logo({ size = 30, withText = true }: { size?: number; withText?:
         height={size}
         viewBox="0 0 40 40"
         fill="none"
-        aria-label="DoerFlow logo"
+        aria-label={t("logo.ariaLabel")}
         role="img"
       >
         <defs>
@@ -35,7 +40,9 @@ export function Logo({ size = 30, withText = true }: { size?: number; withText?:
           <span style={{ fontSize: 17, fontWeight: 700, color: COLORS.text, letterSpacing: "-0.01em" }}>
             DoerFlow
           </span>
-          <span style={{ fontSize: 10, color: COLORS.muted, letterSpacing: "0.18em" }}>智工网</span>
+          <span style={{ fontSize: 10, color: COLORS.muted, letterSpacing: "0.18em" }}>
+            {t("logo.tagline")}
+          </span>
         </span>
       )}
     </div>

@@ -10,20 +10,24 @@ import {
   FieldTimeOutlined,
 } from "@ant-design/icons"
 import { SectionHeading, Reveal } from "@/components/site/section-heading"
+import { useT } from "@/lib/i18n/context"
 import { COLORS } from "@/lib/theme"
 
 const { Title, Text } = Typography
 
-const ITEMS = [
-  { icon: <NodeIndexOutlined />, title: "Dedicated Agent L2/L3", desc: "Team-operated sequencer with a progressive decentralization path." },
-  { icon: <ThunderboltOutlined />, title: "Ultra-low native gas", desc: "Built for high-frequency micro-transactions at ~$0.0001 / tx." },
-  { icon: <GiftOutlined />, title: "MasterChef incentives", desc: "Incentive distribution for agents, developers, and devices." },
-  { icon: <SafetyOutlined />, title: "UUPS upgradeable", desc: "Upgradeable contracts secured by timelock governance." },
-  { icon: <GlobalOutlined />, title: "Omnichain bridges", desc: "Native L1↔L2 bridge plus CCTP / LayerZero for cross-chain skills." },
-  { icon: <FieldTimeOutlined />, title: "Async payments", desc: "Off-chain EIP-712 receipts with batched on-chain settlement." },
+const ITEM_ICONS = [
+  <NodeIndexOutlined key="l2" />,
+  <ThunderboltOutlined key="gas" />,
+  <GiftOutlined key="chef" />,
+  <SafetyOutlined key="uups" />,
+  <GlobalOutlined key="bridge" />,
+  <FieldTimeOutlined key="async" />,
 ]
 
 export function AgentChain() {
+  const { t, tm } = useT()
+  const items = tm<Array<{ title: string; desc: string }>>("agentChain.items")
+
   return (
     <section
       style={{
@@ -44,15 +48,15 @@ export function AgentChain() {
       />
       <div className="df-section" style={{ position: "relative" }}>
         <SectionHeading
-          eyebrow="Agent Chain"
-          title="Built for"
-          highlight="agent-scale economics"
-          cn="为智能体规模经济而生的专用链"
-          subtitle="A purpose-built chain where millions of agents transact continuously at near-zero cost."
+          eyebrow={t("agentChain.eyebrow")}
+          title={t("agentChain.title")}
+          highlight={t("agentChain.highlight")}
+          tagline={t("agentChain.tagline")}
+          subtitle={t("agentChain.subtitle")}
         />
 
         <Row gutter={[24, 28]}>
-          {ITEMS.map((it, i) => (
+          {items.map((it, i) => (
             <Col xs={24} sm={12} lg={8} key={it.title}>
               <Reveal delay={(i % 3) * 0.08}>
                 <div style={{ display: "flex", gap: 16 }}>
@@ -70,7 +74,7 @@ export function AgentChain() {
                       fontSize: 20,
                     }}
                   >
-                    {it.icon}
+                    {ITEM_ICONS[i]}
                   </div>
                   <div>
                     <Title level={5} style={{ margin: "0 0 4px", color: COLORS.text }}>

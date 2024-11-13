@@ -12,14 +12,14 @@ export function SectionHeading({
   title,
   highlight,
   subtitle,
-  cn,
+  tagline,
   align = "center",
 }: {
   eyebrow?: string
   title: string
   highlight?: string
   subtitle?: ReactNode
-  cn?: string
+  tagline?: string
   align?: "center" | "left"
 }) {
   return (
@@ -47,7 +47,11 @@ export function SectionHeading({
       >
         {title} {highlight && <span className="df-gradient-text">{highlight}</span>}
       </Title>
-      {cn && <p className="df-cn" style={{ marginTop: 10, marginBottom: 0 }}>{cn}</p>}
+      {tagline && (
+        <p className="df-cn" style={{ marginTop: 10, marginBottom: 0 }}>
+          {tagline}
+        </p>
+      )}
       {subtitle && (
         <p
           style={{
@@ -65,13 +69,7 @@ export function SectionHeading({
   )
 }
 
-export function Reveal({
-  children,
-  delay = 0,
-}: {
-  children: ReactNode
-  delay?: number
-}) {
+export function Reveal({ children, delay = 0 }: { children: ReactNode; delay?: number }) {
   return (
     <motion.div
       initial={{ opacity: 0, y: 28 }}

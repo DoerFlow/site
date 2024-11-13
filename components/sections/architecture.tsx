@@ -2,61 +2,29 @@
 
 import { Card, Tag, Typography } from "antd"
 import { SectionHeading, Reveal } from "@/components/site/section-heading"
+import { useT } from "@/lib/i18n/context"
 import { COLORS } from "@/lib/theme"
 
 const { Title, Text } = Typography
 
-const LAYERS = [
-  {
-    n: "01",
-    name: "Application Layer",
-    desc: "Creator DApp, Wallet App, Worker App, and Admin Console.",
-    tags: ["Creator DApp", "Wallet", "Worker", "Admin"],
-    accent: COLORS.primary,
-  },
-  {
-    n: "02",
-    name: "Index Layer",
-    desc: "NestJS REST API, on-chain event indexing, search & analytics.",
-    tags: ["NestJS", "Event Indexer", "Search", "Analytics"],
-    accent: COLORS.primary,
-  },
-  {
-    n: "03",
-    name: "Communication Layer",
-    desc: "libp2p Beacon discovery, encrypted messaging, WebRTC browser nodes.",
-    tags: ["libp2p", "Noise", "WebRTC", "DHT"],
-    accent: COLORS.purple,
-  },
-  {
-    n: "04",
-    name: "Settlement Layer",
-    desc: "AgentNFT (ERC-725/6551), SkillRegistry, Escrow, MetaDEX.",
-    tags: ["AgentNFT", "SkillRegistry", "Escrow", "MetaDEX"],
-    accent: COLORS.purple,
-  },
-  {
-    n: "05",
-    name: "Chain Layer",
-    desc: "Base + dedicated Agent L2 with ultra-low gas (~$0.0001 / tx).",
-    tags: ["Base", "Agent L2", "~$0.0001/tx"],
-    accent: COLORS.purple,
-  },
-]
+const LAYER_ACCENTS = [COLORS.primary, COLORS.primary, COLORS.purple, COLORS.purple, COLORS.purple]
 
 export function Architecture() {
+  const { t, tm } = useT()
+  const layers = tm<Array<{ n: string; name: string; desc: string; tags: string[] }>>("architecture.layers")
+
   return (
     <section id="protocol" className="df-anchor df-section">
       <SectionHeading
-        eyebrow="Protocol Architecture"
-        title="Five layers, one"
-        highlight="settlement network"
-        cn="五层协议架构：从应用到链上结算"
-        subtitle="A vertically integrated stack — from user-facing apps down to a purpose-built chain for agent-scale economics."
+        eyebrow={t("architecture.eyebrow")}
+        title={t("architecture.title")}
+        highlight={t("architecture.highlight")}
+        tagline={t("architecture.tagline")}
+        subtitle={t("architecture.subtitle")}
       />
 
       <div style={{ display: "flex", flexDirection: "column", gap: 14, maxWidth: 920, margin: "0 auto" }}>
-        {LAYERS.map((l, i) => (
+        {layers.map((l, i) => (
           <Reveal key={l.n} delay={i * 0.06}>
             <Card
               className="df-glass df-glass-hover"
@@ -69,7 +37,7 @@ export function Architecture() {
                   alignItems: "center",
                   gap: 20,
                   padding: "22px 26px",
-                  borderLeft: `3px solid ${l.accent}`,
+                  borderLeft: `3px solid ${LAYER_ACCENTS[i]}`,
                   borderRadius: 16,
                 }}
               >
@@ -77,7 +45,7 @@ export function Architecture() {
                   style={{
                     fontSize: 28,
                     fontWeight: 800,
-                    color: l.accent,
+                    color: LAYER_ACCENTS[i],
                     opacity: 0.85,
                     minWidth: 44,
                   }}
@@ -90,16 +58,16 @@ export function Architecture() {
                   </Title>
                   <Text style={{ color: COLORS.muted }}>{l.desc}</Text>
                   <div style={{ marginTop: 10, display: "flex", flexWrap: "wrap", gap: 6 }}>
-                    {l.tags.map((t) => (
+                    {l.tags.map((tag) => (
                       <Tag
-                        key={t}
+                        key={tag}
                         style={{
                           background: "rgba(255,255,255,0.04)",
                           borderColor: COLORS.border,
                           color: COLORS.muted,
                         }}
                       >
-                        {t}
+                        {tag}
                       </Tag>
                     ))}
                   </div>

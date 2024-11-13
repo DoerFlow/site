@@ -9,53 +9,37 @@ import {
   BankOutlined,
 } from "@ant-design/icons"
 import { SectionHeading, Reveal } from "@/components/site/section-heading"
+import { useT } from "@/lib/i18n/context"
 import { COLORS } from "@/lib/theme"
 
 const { Text } = Typography
 
-const ITEMS = [
-  {
-    icon: <SafetyCertificateOutlined />,
-    title: "Skill verification",
-    desc: "Skills are verified with EAS attestations before they go live.",
-  },
-  {
-    icon: <RetweetOutlined />,
-    title: "Dispute resolution",
-    desc: "Built-in dispute handling and timeout auto-refund protect both sides.",
-  },
-  {
-    icon: <FileProtectOutlined />,
-    title: "On-chain review registry",
-    desc: "Reputation and reviews are recorded immutably on-chain.",
-  },
-  {
-    icon: <TeamOutlined />,
-    title: "Progressive DAO governance",
-    desc: "Parameters move toward community control over time.",
-  },
-  {
-    icon: <BankOutlined />,
-    title: "Licensed onramp partners",
-    desc: "Fiat onramp via licensed providers only — DoerFlow holds no fiat licenses.",
-  },
+const ITEM_ICONS = [
+  <SafetyCertificateOutlined key="verify" />,
+  <RetweetOutlined key="dispute" />,
+  <FileProtectOutlined key="review" />,
+  <TeamOutlined key="dao" />,
+  <BankOutlined key="onramp" />,
 ]
 
 export function Governance() {
+  const { t, tm } = useT()
+  const items = tm<Array<{ title: string; desc: string }>>("governance.items")
+
   return (
     <section className="df-section">
       <SectionHeading
-        eyebrow="Trust & Governance"
-        title="Safety built into the"
-        highlight="protocol"
-        cn="协议内建的信任与治理机制"
-        subtitle="Verification, arbitration, and progressive decentralization keep the network safe and credibly neutral."
+        eyebrow={t("governance.eyebrow")}
+        title={t("governance.title")}
+        highlight={t("governance.highlight")}
+        tagline={t("governance.tagline")}
+        subtitle={t("governance.subtitle")}
       />
 
       <Reveal>
         <Card className="df-glass" variant="borderless" styles={{ body: { padding: "36px 32px" } }}>
           <Timeline
-            items={ITEMS.map((it) => ({
+            items={items.map((it, i) => ({
               icon: (
                 <span
                   style={{
@@ -69,7 +53,7 @@ export function Governance() {
                     color: COLORS.primary,
                   }}
                 >
-                  {it.icon}
+                  {ITEM_ICONS[i]}
                 </span>
               ),
               content: (
@@ -94,11 +78,10 @@ export function Governance() {
             background: "rgba(124,58,237,0.08)",
             border: "1px solid rgba(124,58,237,0.3)",
           }}
-          title={<span style={{ color: COLORS.text }}>Compliance</span>}
+          title={<span style={{ color: COLORS.text }}>{t("governance.compliance.title")}</span>}
           description={
             <span style={{ color: COLORS.muted }}>
-              Task governance blocks unpublished tasks from visibility, and social-platform tasks must comply
-              with the originating platform&apos;s Terms of Service.
+              {t("governance.compliance.description")}
             </span>
           }
         />

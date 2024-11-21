@@ -50,16 +50,26 @@ function resolveInitialLocale(): Locale {
   return DEFAULT_LOCALE
 }
 
-export function I18nProvider({ children }: { children: ReactNode }) {
-  const [locale, setLocaleState] = useState<Locale>(DEFAULT_LOCALE)
-  const [ready, setReady] = useState(false)
+export function I18nProvider({
+  children,
+  initialLocale,
+}: {
+  children: ReactNode
+  initialLocale?: Locale
+}) {
+  const [locale, setLocaleState] = useState<Locale>(initialLocale ?? DEFAULT_LOCALE)
+  const [ready, setReady] = useState(Boolean(initialLocale))
 
   useEffect(() => {
+    if (initialLocale) {
+      document.documentElement.lang = initialLocale
+      return
+    }
     const initial = resolveInitialLocale()
     setLocaleState(initial)
     persistLocale(initial)
     setReady(true)
-  }, [])
+  }, [initialLocale])
 
   const setLocale = useCallback((next: Locale) => {
     setLocaleState(next)

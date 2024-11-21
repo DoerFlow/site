@@ -6,6 +6,7 @@ import { useState } from "react"
 import { motion } from "framer-motion"
 import { useT } from "@/lib/i18n/context"
 import { COLORS } from "@/lib/theme"
+import { DOCS_URL } from "@/lib/urls"
 
 const { Title } = Typography
 
@@ -53,7 +54,7 @@ export function FooterCta() {
           <Button type="primary" size="large" icon={<ArrowRightOutlined />} iconPlacement="end">
             {t("common.launchApp")}
           </Button>
-          <Button size="large" ghost icon={<BookOutlined />} href="https://doerflow.dev/docs" target="_blank">
+          <Button size="large" ghost icon={<BookOutlined />} href={DOCS_URL} target="_blank">
             {t("common.readDocs")}
           </Button>
           <Button size="large" type="text" icon={<TeamOutlined />} style={{ color: COLORS.muted }}>

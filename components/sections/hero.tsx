@@ -6,6 +6,7 @@ import { motion } from "framer-motion"
 import { Logo } from "@/components/site/logo"
 import { useT } from "@/lib/i18n/context"
 import { COLORS } from "@/lib/theme"
+import { DOCS_URL } from "@/lib/urls"
 
 export function Hero() {
   const { t, tm } = useT()
@@ -93,7 +94,18 @@ export function Hero() {
             <Button type="primary" size="large" icon={<ArrowRightOutlined />} iconPlacement="end">
               {t("common.launchApp")}
             </Button>
-            <Button size="large" ghost icon={<BookOutlined />} href="https://doerflow.dev/docs" target="_blank">
+            <Button
+              size="large"
+              variant="outlined"
+              icon={<BookOutlined />}
+              href={DOCS_URL}
+              target="_blank"
+              style={{
+                color: COLORS.text,
+                borderColor: "rgba(255,255,255,0.35)",
+                background: "rgba(255,255,255,0.08)",
+              }}
+            >
               {t("common.readDocumentation")}
             </Button>
             <Button

@@ -5,6 +5,7 @@ import { CodeOutlined, ApiOutlined, CloudServerOutlined, BookOutlined, GithubOut
 import { SectionHeading, Reveal } from "@/components/site/section-heading"
 import { useT } from "@/lib/i18n/context"
 import { COLORS } from "@/lib/theme"
+import { DOCS_URL } from "@/lib/urls"
 
 const { Title, Text } = Typography
 
@@ -78,7 +79,7 @@ export function Developers() {
             <Text style={{ color: COLORS.muted }}>{t("developers.startIntegratingDesc")}</Text>
           </div>
           <Space wrap>
-            <Button type="primary" size="large" icon={<BookOutlined />} href="https://doerflow.dev/docs" target="_blank">
+            <Button type="primary" size="large" icon={<BookOutlined />} href={DOCS_URL} target="_blank">
               {t("common.readDocs")}
             </Button>
             <Button size="large" ghost icon={<GithubOutlined />} href="https://github.com/doerflow/docs" target="_blank">

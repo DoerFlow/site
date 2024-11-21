@@ -37,9 +37,15 @@ function AntdLocaleBridge({ children }: { children: ReactNode }) {
   )
 }
 
-export function Providers({ children }: { children: ReactNode }) {
+export function Providers({
+  children,
+  initialLocale,
+}: {
+  children: ReactNode
+  initialLocale?: Locale
+}) {
   return (
-    <I18nProvider>
+    <I18nProvider initialLocale={initialLocale}>
       <AntdRegistry>
         <AntdLocaleBridge>{children}</AntdLocaleBridge>
       </AntdRegistry>

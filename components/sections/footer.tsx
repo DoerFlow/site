@@ -5,6 +5,7 @@ import { Row, Col, Typography } from "antd"
 import { Logo } from "@/components/site/logo"
 import { useT } from "@/lib/i18n/context"
 import { COLORS } from "@/lib/theme"
+import { DOCS_URL } from "@/lib/urls"
 
 const { Text } = Typography
 
@@ -34,7 +35,7 @@ export function Footer() {
       {
         title: t("footer.columns.developers.title"),
         links: [
-          { label: t("footer.columns.developers.links.docs"), href: "https://doerflow.dev/docs" },
+          { label: t("footer.columns.developers.links.docs"), href: DOCS_URL },
           { label: t("footer.columns.developers.links.github"), href: "https://github.com/doerflow" },
           { label: t("footer.columns.developers.links.openApi"), href: "#developers" },
           { label: t("footer.columns.developers.links.sdks"), href: "#developers" },

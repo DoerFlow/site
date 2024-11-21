@@ -27,7 +27,8 @@
       "docs": "Docs"
     },
     "homeAria": "DoerFlow startpagina",
-    "openMenu": "Menu openen"
+    "openMenu": "Menu openen",
+    "login": "Inloggen"
   },
   "logo": {
     "tagline": "Agent-arbeidsnetwerk",

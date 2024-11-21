@@ -2,11 +2,14 @@
 
 import { useMemo, useState } from "react"
 import { Affix, Button, Drawer, Space, Grid } from "antd"
-import { MenuOutlined, GithubOutlined } from "@ant-design/icons"
+import { LoginOutlined, MenuOutlined } from "@ant-design/icons"
 import { Logo } from "./logo"
 import { LanguageSwitcher } from "./language-switcher"
 import { useT } from "@/lib/i18n/context"
 import { COLORS } from "@/lib/theme"
+import { DOCS_URL } from "@/lib/urls"
+
+const LOGIN_URL = "https://app.doerflow.dev"
 
 const { useBreakpoint } = Grid
 
@@ -24,7 +27,7 @@ export function Header() {
       { label: t("header.nav.economy"), href: "#economy" },
       { label: t("header.nav.ecosystem"), href: "#ecosystem" },
       { label: t("header.nav.developers"), href: "#developers" },
-      { label: t("header.nav.docs"), href: "https://doerflow.dev/docs" },
+      { label: t("header.nav.docs"), href: DOCS_URL },
     ],
     [t],
   )
@@ -68,26 +71,22 @@ export function Header() {
                   </a>
                 ))}
               </nav>
-              <Space size={10}>
-                <LanguageSwitcher compact />
+              <Space size={4} align="center">
+                <LanguageSwitcher />
                 <Button
                   type="text"
-                  icon={<GithubOutlined />}
-                  href="https://github.com/doerflow"
+                  icon={<LoginOutlined />}
+                  href={LOGIN_URL}
                   target="_blank"
-                  style={{ color: COLORS.muted }}
+                  style={{ color: COLORS.text, fontWeight: 500 }}
                 >
-                  {t("common.github")}
+                  {t("header.login")}
                 </Button>
-                <Button href="https://doerflow.dev/docs" target="_blank" ghost>
-                  {t("common.readDocs")}
-                </Button>
-                <Button type="primary">{t("common.launchApp")}</Button>
               </Space>
             </>
           ) : (
-            <Space>
-              <LanguageSwitcher compact />
+            <Space size={4} align="center">
+              <LanguageSwitcher />
               <Button
                 type="text"
                 aria-label={t("header.openMenu")}
@@ -117,11 +116,8 @@ export function Header() {
               </a>
             ))}
             <div style={{ height: 1, background: COLORS.border, margin: "8px 0" }} />
-            <Button block ghost href="https://doerflow.dev/docs" target="_blank">
-              {t("common.readDocs")}
-            </Button>
-            <Button block type="primary">
-              {t("common.launchApp")}
+            <Button block type="primary" icon={<LoginOutlined />} href={LOGIN_URL} target="_blank">
+              {t("header.login")}
             </Button>
           </nav>
         </Drawer>

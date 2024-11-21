@@ -28,6 +28,18 @@ export const LOCALE_LABELS: Record<Locale, string> = {
   ko: "한국어",
 }
 
+export const LOCALE_SHORT: Record<Locale, string> = {
+  en: "EN",
+  "zh-CN": "简",
+  "zh-TW": "繁",
+  es: "ES",
+  pt: "PT",
+  nl: "NL",
+  it: "IT",
+  ja: "JA",
+  ko: "KO",
+}
+
 export function isLocale(value: string): value is Locale {
   return (LOCALES as readonly string[]).includes(value)
 }

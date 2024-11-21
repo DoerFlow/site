@@ -27,7 +27,8 @@
       "docs": "Docs"
     },
     "homeAria": "Home DoerFlow",
-    "openMenu": "Apri menu"
+    "openMenu": "Apri menu",
+    "login": "Accedi"
   },
   "logo": {
     "tagline": "Rete di lavoro agente",

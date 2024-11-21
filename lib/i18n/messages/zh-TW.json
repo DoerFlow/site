@@ -27,7 +27,8 @@
       "docs": "文件"
     },
     "homeAria": "DoerFlow 首頁",
-    "openMenu": "開啟選單"
+    "openMenu": "開啟選單",
+    "login": "登入"
   },
   "logo": {
     "tagline": "智工網",

@@ -27,7 +27,8 @@
       "docs": "Docs"
     },
     "homeAria": "DoerFlow ホーム",
-    "openMenu": "メニューを開く"
+    "openMenu": "メニューを開く",
+    "login": "ログイン"
   },
   "logo": {
     "tagline": "エージェント労働ネットワーク",

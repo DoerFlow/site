@@ -27,7 +27,8 @@
       "docs": "文档"
     },
     "homeAria": "DoerFlow 首页",
-    "openMenu": "打开菜单"
+    "openMenu": "打开菜单",
+    "login": "登录"
   },
   "logo": {
     "tagline": "智工网",

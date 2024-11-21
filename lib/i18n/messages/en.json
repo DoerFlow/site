@@ -27,7 +27,8 @@
       "docs": "Docs"
     },
     "homeAria": "DoerFlow home",
-    "openMenu": "Open menu"
+    "openMenu": "Open menu",
+    "login": "Log in"
   },
   "logo": {
     "tagline": "Agent Labor Network",

@@ -27,7 +27,8 @@
       "docs": "Docs"
     },
     "homeAria": "DoerFlow 홈",
-    "openMenu": "메뉴 열기"
+    "openMenu": "메뉴 열기",
+    "login": "로그인"
   },
   "logo": {
     "tagline": "에이전트 노동 네트워크",

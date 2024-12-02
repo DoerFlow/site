@@ -162,3 +162,191 @@ body {
 .df-link:hover {
   color: var(--df-primary);
 }
+
+.df-header-inner {
+  max-width: 1240px;
+  margin: 0 auto;
+  padding: 0 24px;
+  height: 64px;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 16px;
+}
+
+.df-header-nav {
+  display: none;
+  gap: 28px;
+}
+
+.df-header-actions {
+  display: flex;
+  align-items: center;
+  gap: 4px;
+}
+
+.df-header-login {
+  display: none;
+  align-items: center;
+  gap: 8px;
+  padding: 6px 10px;
+  border-radius: 8px;
+  color: var(--df-text);
+  font-size: 14px;
+  font-weight: 500;
+  text-decoration: none;
+}
+
+.df-header-login:hover {
+  color: var(--df-primary);
+}
+
+.df-header-menu-btn {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  width: 40px;
+  height: 40px;
+  border: none;
+  border-radius: 8px;
+  background: transparent;
+  color: var(--df-text);
+  cursor: pointer;
+}
+
+.df-header-drawer {
+  display: block;
+  padding: 16px 24px 24px;
+  border-top: 1px solid var(--df-border);
+  background: rgba(11, 17, 32, 0.96);
+}
+
+@media (min-width: 1024px) {
+  .df-header-nav {
+    display: flex;
+  }
+
+  .df-header-login {
+    display: inline-flex;
+  }
+
+  .df-header-menu-btn,
+  .df-header-drawer {
+    display: none;
+  }
+}
+
+.df-btn {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 8px;
+  border-radius: 10px;
+  font-size: 15px;
+  font-weight: 600;
+  text-decoration: none;
+  transition: transform 0.2s ease, background 0.2s ease, border-color 0.2s ease;
+}
+
+.df-btn:active {
+  transform: translateY(1px);
+}
+
+.df-btn-lg {
+  min-height: 44px;
+  padding: 0 18px;
+}
+
+.df-btn-block {
+  width: 100%;
+}
+
+.df-btn-primary {
+  border: 1px solid rgba(0, 212, 170, 0.35);
+  background: linear-gradient(180deg, #00d4aa 0%, #00b894 100%);
+  color: #041018;
+}
+
+.df-btn-outline {
+  border: 1px solid rgba(255, 255, 255, 0.35);
+  background: rgba(255, 255, 255, 0.08);
+  color: var(--df-text);
+}
+
+.df-btn-ghost {
+  border: 1px solid transparent;
+  background: transparent;
+  color: var(--df-muted);
+}
+
+.df-hero-actions {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 12px;
+  justify-content: center;
+}
+
+.df-fade-in {
+  animation: df-fade-in 0.55s ease both;
+}
+
+.df-delay-1 {
+  animation-delay: 0.05s;
+}
+.df-delay-2 {
+  animation-delay: 0.1s;
+}
+.df-delay-3 {
+  animation-delay: 0.18s;
+}
+.df-delay-4 {
+  animation-delay: 0.24s;
+}
+.df-delay-5 {
+  animation-delay: 0.3s;
+}
+.df-delay-6 {
+  animation-delay: 0.4s;
+}
+
+@keyframes df-fade-in {
+  from {
+    opacity: 0;
+    transform: translateY(20px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+.df-section-skeleton {
+  min-height: 240px;
+  margin: 48px auto;
+  max-width: 1240px;
+  border-radius: 16px;
+  background: linear-gradient(
+    90deg,
+    rgba(255, 255, 255, 0.03) 0%,
+    rgba(255, 255, 255, 0.07) 50%,
+    rgba(255, 255, 255, 0.03) 100%
+  );
+  background-size: 200% 100%;
+  animation: df-skeleton 1.4s ease-in-out infinite;
+}
+
+@keyframes df-skeleton {
+  0% {
+    background-position: 100% 0;
+  }
+  100% {
+    background-position: -100% 0;
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .df-fade-in,
+  .df-section-skeleton {
+    animation: none;
+  }
+}

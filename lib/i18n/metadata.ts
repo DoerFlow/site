@@ -16,6 +16,7 @@ export function buildPageMetadata(locale: Locale): Metadata {
   const url = `${SITE_URL}${localePath(locale)}`
 
   return {
+    metadataBase: new URL(SITE_URL),
     title: messages.meta.title,
     description: messages.meta.description,
     alternates: {

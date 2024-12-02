@@ -1,0 +1,2 @@
+# Canonical host: doerflow.dev (apex). www → 301
+https://www.doerflow.dev/* https://doerflow.dev/:splat 301

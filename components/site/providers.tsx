@@ -1,8 +1,34 @@
 "use client"
 
-import { I18nProvider } from "@/lib/i18n/context"
+import { AntdRegistry } from "@ant-design/nextjs-registry"
+import { App as AntdApp, ConfigProvider } from "antd"
+import type { Locale as AntdLocale } from "antd/es/locale"
+import { useEffect, useState, type ReactNode } from "react"
+import { loadAntdLocale } from "@/lib/antd-locale"
 import type { Locale } from "@/lib/i18n/config"
-import type { ReactNode } from "react"
+import { I18nProvider, useI18n } from "@/lib/i18n/context"
+import { darkTheme } from "@/lib/theme"
+
+function AntdLocaleBridge({ children }: { children: ReactNode }) {
+  const { locale } = useI18n()
+  const [antdLocale, setAntdLocale] = useState<AntdLocale | null>(null)
+
+  useEffect(() => {
+    let active = true
+    loadAntdLocale(locale).then((value) => {
+      if (active) setAntdLocale(value)
+    })
+    return () => {
+      active = false
+    }
+  }, [locale])
+
+  return (
+    <ConfigProvider theme={darkTheme} locale={antdLocale ?? undefined}>
+      <AntdApp>{children}</AntdApp>
+    </ConfigProvider>
+  )
+}
 
 export function Providers({
   children,
@@ -11,5 +37,11 @@ export function Providers({
   children: ReactNode
   initialLocale?: Locale
 }) {
-  return <I18nProvider initialLocale={initialLocale}>{children}</I18nProvider>
+  return (
+    <I18nProvider initialLocale={initialLocale}>
+      <AntdRegistry>
+        <AntdLocaleBridge>{children}</AntdLocaleBridge>
+      </AntdRegistry>
+    </I18nProvider>
+  )
 }

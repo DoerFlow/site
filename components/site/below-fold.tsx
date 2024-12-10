@@ -1,33 +1,6 @@
 "use client"
 
 import dynamic from "next/dynamic"
-import { AntdRegistry } from "@ant-design/nextjs-registry"
-import enUS from "antd/locale/en_US"
-import esES from "antd/locale/es_ES"
-import itIT from "antd/locale/it_IT"
-import jaJP from "antd/locale/ja_JP"
-import koKR from "antd/locale/ko_KR"
-import nlNL from "antd/locale/nl_NL"
-import ptBR from "antd/locale/pt_BR"
-import zhCN from "antd/locale/zh_CN"
-import zhTW from "antd/locale/zh_TW"
-import { ConfigProvider, App as AntdApp } from "antd"
-import type { ReactNode } from "react"
-import type { Locale } from "@/lib/i18n/config"
-import { useI18n } from "@/lib/i18n/context"
-import { darkTheme } from "@/lib/theme"
-
-const ANTD_LOCALES: Record<Locale, typeof enUS> = {
-  en: enUS,
-  "zh-CN": zhCN,
-  "zh-TW": zhTW,
-  es: esES,
-  pt: ptBR,
-  nl: nlNL,
-  it: itIT,
-  ja: jaJP,
-  ko: koKR,
-}
 
 const loading = () => <div className="df-section-skeleton" aria-hidden />
 
@@ -46,42 +19,31 @@ const Roadmap = dynamic(() => import("@/components/sections/roadmap").then((m) =
 const FooterCta = dynamic(() => import("@/components/sections/footer-cta").then((m) => ({ default: m.FooterCta })), { loading, ssr: false })
 const Footer = dynamic(() => import("@/components/sections/footer").then((m) => ({ default: m.Footer })), { loading, ssr: false })
 
-function AntdLocaleBridge({ children }: { children: ReactNode }) {
-  const { locale } = useI18n()
-  return (
-    <ConfigProvider theme={darkTheme} locale={ANTD_LOCALES[locale]}>
-      <AntdApp>{children}</AntdApp>
-    </ConfigProvider>
-  )
-}
-
 function Divider() {
   return <div className="df-section-divider" />
 }
 
 export function BelowFold() {
   return (
-    <AntdRegistry>
-      <AntdLocaleBridge>
-        <Shift />
-        <Divider />
-        <Architecture />
-        <Features />
-        <Divider />
-        <Products />
-        <HowItWorks />
-        <Divider />
-        <UseCases />
-        <Economy />
-        <AgentChain />
-        <Ecosystem />
-        <Divider />
-        <Developers />
-        <Governance />
-        <Roadmap />
-        <FooterCta />
-        <Footer />
-      </AntdLocaleBridge>
-    </AntdRegistry>
+    <>
+      <Shift />
+      <Divider />
+      <Architecture />
+      <Features />
+      <Divider />
+      <Products />
+      <HowItWorks />
+      <Divider />
+      <UseCases />
+      <Economy />
+      <AgentChain />
+      <Ecosystem />
+      <Divider />
+      <Developers />
+      <Governance />
+      <Roadmap />
+      <FooterCta />
+      <Footer />
+    </>
   )
 }

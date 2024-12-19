@@ -1,0 +1,19 @@
+$df-bg: #0b1120;
+$df-surface: #141b2d;
+$df-elevated: #1a2235;
+$df-primary: #00d4aa;
+$df-purple: #7c3aed;
+$df-border: rgba(255, 255, 255, 0.08);
+$df-text: #e7ecf3;
+$df-muted: #8b97ad;
+
+:root {
+  --df-bg: #{$df-bg};
+  --df-surface: #{$df-surface};
+  --df-elevated: #{$df-elevated};
+  --df-primary: #{$df-primary};
+  --df-purple: #{$df-purple};
+  --df-border: #{$df-border};
+  --df-text: #{$df-text};
+  --df-muted: #{$df-muted};
+}

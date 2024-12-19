@@ -1,7 +1,7 @@
 import type { Metadata, Viewport } from "next"
 import { Inter } from "next/font/google"
 import { SITE_URL } from "@/lib/urls"
-import "./globals.css"
+import "@/styles/globals.scss"
 
 const inter = Inter({ variable: "--font-inter", subsets: ["latin"] })
 

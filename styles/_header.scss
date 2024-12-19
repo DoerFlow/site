@@ -1,0 +1,73 @@
+@use "tokens" as *;
+
+.df-header {
+  width: 100%;
+  background: rgba(11, 17, 32, 0.72);
+  backdrop-filter: blur(14px);
+  border-bottom: 1px solid var(--df-border);
+}
+
+.df-header-inner {
+  max-width: 1240px;
+  margin: 0 auto;
+  padding: 0 24px;
+  height: 64px;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 16px;
+}
+
+.df-header-brand {
+  text-decoration: none;
+}
+
+.df-header-nav {
+  display: none;
+  gap: 28px;
+}
+
+.df-header-nav-link {
+  font-size: 14px;
+  font-weight: 500;
+}
+
+.df-header-actions {
+  display: flex;
+  align-items: center;
+  gap: 4px;
+}
+
+.df-header-drawer-nav {
+  display: flex;
+  flex-direction: column;
+  gap: 18px;
+}
+
+.df-header-drawer-link {
+  font-size: 16px;
+  color: var(--df-text);
+  text-decoration: none;
+}
+
+.df-header-drawer-divider {
+  height: 1px;
+  background: var(--df-border);
+  margin: 8px 0;
+}
+
+@media (min-width: 1024px) {
+  .df-header-nav {
+    display: flex;
+  }
+
+  .df-header-menu-btn {
+    display: none;
+  }
+}
+
+@media (max-width: 1023px) {
+  .df-header-login-btn {
+    display: none;
+  }
+}

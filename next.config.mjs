@@ -9,7 +9,7 @@ const nextConfig = {
     unoptimized: true,
   },
   experimental: {
-    optimizePackageImports: ["antd", "@ant-design/icons", "lucide-react", "framer-motion"],
+    optimizePackageImports: ["antd", "@ant-design/icons", "framer-motion"],
   },
 }
 

@@ -1,0 +1,38 @@
+@use "tokens" as *;
+
+* {
+  box-sizing: border-box;
+}
+
+html,
+body {
+  margin: 0;
+  padding: 0;
+  background-color: var(--df-bg);
+  color: var(--df-text);
+  font-family: var(--font-inter), "PingFang SC", "Microsoft YaHei", sans-serif;
+  scroll-behavior: smooth;
+  -webkit-font-smoothing: antialiased;
+}
+
+::selection {
+  background: rgba(0, 212, 170, 0.3);
+}
+
+::-webkit-scrollbar {
+  width: 10px;
+  height: 10px;
+}
+
+::-webkit-scrollbar-track {
+  background: var(--df-bg);
+}
+
+::-webkit-scrollbar-thumb {
+  background: #2a3550;
+  border-radius: 6px;
+
+  &:hover {
+    background: #36436a;
+  }
+}

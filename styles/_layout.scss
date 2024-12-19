@@ -1,0 +1,89 @@
+@use "tokens" as *;
+
+.df-section {
+  position: relative;
+  padding: 96px 24px;
+  max-width: 1240px;
+  margin: 0 auto;
+
+  @media (max-width: 768px) {
+    padding: 64px 16px;
+  }
+}
+
+.df-anchor {
+  scroll-margin-top: 80px;
+}
+
+.df-glass {
+  background: linear-gradient(
+    180deg,
+    rgba(26, 34, 53, 0.85) 0%,
+    rgba(20, 27, 45, 0.7) 100%
+  );
+  border: 1px solid var(--df-border);
+  backdrop-filter: blur(12px);
+  border-radius: 16px;
+}
+
+.df-glass-hover {
+  transition: transform 0.25s ease, border-color 0.25s ease, box-shadow 0.25s ease;
+
+  &:hover {
+    transform: translateY(-4px);
+    border-color: rgba(0, 212, 170, 0.45);
+    box-shadow: 0 18px 40px -18px rgba(0, 212, 170, 0.35);
+  }
+}
+
+.df-gradient-text {
+  background: linear-gradient(90deg, #00d4aa 0%, #56e0c6 50%, #7c3aed 120%);
+  -webkit-background-clip: text;
+  background-clip: text;
+  -webkit-text-fill-color: transparent;
+  color: transparent;
+}
+
+.df-eyebrow {
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  font-size: 12px;
+  font-weight: 600;
+  letter-spacing: 0.14em;
+  text-transform: uppercase;
+  color: var(--df-primary);
+  padding: 6px 14px;
+  border-radius: 999px;
+  border: 1px solid rgba(0, 212, 170, 0.25);
+  background: rgba(0, 212, 170, 0.08);
+}
+
+.df-cn {
+  color: var(--df-muted);
+  font-size: 15px;
+  line-height: 1.7;
+}
+
+.df-section-divider {
+  height: 1px;
+  width: 100%;
+  max-width: 1240px;
+  margin: 0 auto;
+  background: linear-gradient(
+    90deg,
+    transparent,
+    rgba(255, 255, 255, 0.12),
+    transparent
+  );
+}
+
+.df-link {
+  color: var(--df-muted);
+  text-decoration: none;
+  transition: color 0.2s ease;
+
+  &:hover {
+    color: var(--df-primary);
+  }
+}

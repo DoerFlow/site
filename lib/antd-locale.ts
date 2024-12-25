@@ -13,7 +13,12 @@ const loaders: Record<Locale, () => Promise<{ default: AntdLocale }>> = {
   ko: () => import("antd/locale/ko_KR"),
 }
 
+const cache = new Map<Locale, AntdLocale>()
+
 export async function loadAntdLocale(locale: Locale): Promise<AntdLocale> {
+  const cached = cache.get(locale)
+  if (cached) return cached
   const mod = await loaders[locale]()
+  cache.set(locale, mod.default)
   return mod.default
 }

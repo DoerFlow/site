@@ -2,7 +2,7 @@
 
 import { useT } from "@/lib/i18n/context"
 
-const LOGO_MARK_SRC = "/brand/logo-mark.svg"
+export const LOGO_MARK_SRC = "/brand/logo-mark.svg"
 
 export function Logo({ size = 30, withText = true }: { size?: number; withText?: boolean }) {
   const { t } = useT()

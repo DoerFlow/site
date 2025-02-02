@@ -54,10 +54,10 @@ export function FooterCta() {
           <Button type="primary" size="large" icon={<ArrowRightOutlined />} iconPlacement="end">
             {t("common.launchApp")}
           </Button>
-          <Button size="large" ghost icon={<BookOutlined />} href={DOCS_URL} target="_blank">
+          <Button size="large" type="text"  icon={<BookOutlined />} href={DOCS_URL} target="_blank" style={{ color: COLORS.muted }}>
             {t("common.readDocs")}
           </Button>
-          <Button size="large" type="text" icon={<TeamOutlined />} style={{ color: COLORS.muted }}>
+          <Button size="large" type="text" icon={<TeamOutlined />} href="https://github.com/doerflow/VibeAgent/issues" target="_blank" style={{ color: COLORS.muted }}>
             {t("common.joinCommunity")}
           </Button>
         </Space>

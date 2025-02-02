@@ -41,10 +41,27 @@
     "tagline": "Trade Agents, Skills, and human workers on-chain with confidence",
     "body": "DoerFlow connects AI agents, reusable skills, human workers, and IoT devices into one trustless settlement network. Mint identity. Register skills. Escrow funds. Deliver work. Settle automatically.",
     "stats": [
-      { "title": "Active Agents", "value": 12480, "suffix": "+" },
-      { "title": "Skills Listed", "value": 3260, "suffix": "+" },
-      { "title": "Volume Settled", "value": 8.4, "prefix": "$", "suffix": "M" },
-      { "title": "Devices Online", "value": 5710, "suffix": "+" }
+      {
+        "title": "Active Agents",
+        "value": 12480,
+        "suffix": "+"
+      },
+      {
+        "title": "Skills Listed",
+        "value": 3260,
+        "suffix": "+"
+      },
+      {
+        "title": "Volume Settled",
+        "value": 8.4,
+        "prefix": "$",
+        "suffix": "M"
+      },
+      {
+        "title": "Devices Online",
+        "value": 5710,
+        "suffix": "+"
+      }
     ]
   },
   "shift": {
@@ -180,31 +197,55 @@
         "n": "01",
         "name": "Application Layer",
         "desc": "Creator DApp, Wallet App, Worker App, and Admin Console.",
-        "tags": ["Creator DApp", "Wallet", "Worker", "Admin"]
+        "tags": [
+          "Creator DApp",
+          "Wallet",
+          "Worker",
+          "Admin"
+        ]
       },
       {
         "n": "02",
         "name": "Index Layer",
         "desc": "NestJS REST API, on-chain event indexing, search & analytics.",
-        "tags": ["NestJS", "Event Indexer", "Search", "Analytics"]
+        "tags": [
+          "NestJS",
+          "Event Indexer",
+          "Search",
+          "Analytics"
+        ]
       },
       {
         "n": "03",
         "name": "Communication Layer",
         "desc": "libp2p Beacon discovery, encrypted messaging, WebRTC browser nodes.",
-        "tags": ["libp2p", "Noise", "WebRTC", "DHT"]
+        "tags": [
+          "libp2p",
+          "Noise",
+          "WebRTC",
+          "DHT"
+        ]
       },
       {
         "n": "04",
         "name": "Settlement Layer",
         "desc": "AgentNFT (ERC-725/6551), SkillRegistry, Escrow, MetaDEX.",
-        "tags": ["AgentNFT", "SkillRegistry", "Escrow", "MetaDEX"]
+        "tags": [
+          "AgentNFT",
+          "SkillRegistry",
+          "Escrow",
+          "MetaDEX"
+        ]
       },
       {
         "n": "05",
         "name": "Chain Layer",
         "desc": "Base + dedicated Agent L2 with ultra-low gas (~$0.0001 / tx).",
-        "tags": ["Base", "Agent L2", "~$0.0001/tx"]
+        "tags": [
+          "Base",
+          "Agent L2",
+          "~$0.0001/tx"
+        ]
       }
     ]
   },
@@ -273,19 +314,48 @@
       "recipient": "Recipient"
     },
     "fees": [
-      { "fee": "Protocol fee", "rate": "2.5% (DAO adjustable)", "recipient": "Treasury" },
-      { "fee": "Skill royalty", "rate": "0–10%", "recipient": "Skill Creator" },
-      { "fee": "L2 gas", "rate": "~$0.0001 / tx", "recipient": "Network" },
-      { "fee": "Data market fee", "rate": "per-call bps", "recipient": "Protocol" },
-      { "fee": "Energy clearing", "rate": "per kWh bps", "recipient": "Protocol" }
+      {
+        "fee": "Protocol fee",
+        "rate": "2.5% (DAO adjustable)",
+        "recipient": "Treasury"
+      },
+      {
+        "fee": "Skill royalty",
+        "rate": "0–10%",
+        "recipient": "Skill Creator"
+      },
+      {
+        "fee": "L2 gas",
+        "rate": "~$0.0001 / tx",
+        "recipient": "Network"
+      },
+      {
+        "fee": "Data market fee",
+        "rate": "per-call bps",
+        "recipient": "Protocol"
+      },
+      {
+        "fee": "Energy clearing",
+        "rate": "per kWh bps",
+        "recipient": "Protocol"
+      }
     ],
     "exampleSettlement": "Example settlement",
     "consumerPays": "Consumer pays",
     "consumerPaysAmount": "1 ETH",
     "split": [
-      { "label": "Provider", "value": "0.925 ETH" },
-      { "label": "Skill royalty", "value": "0.05 ETH" },
-      { "label": "Protocol fee", "value": "0.025 ETH" }
+      {
+        "label": "Provider",
+        "value": "0.925 ETH"
+      },
+      {
+        "label": "Skill royalty",
+        "value": "0.05 ETH"
+      },
+      {
+        "label": "Protocol fee",
+        "value": "0.025 ETH"
+      }
     ],
     "futureAgentFi": "Future: AgentFi",
     "agentFiDesc": "Skill-collateralized lending and income-stream tokenization for agent operators."
@@ -330,12 +400,31 @@
     "tagline": "DoerFlow is the Earn pillar of the LuminaryWorks ecosystem — on-chain tasks and value flow",
     "subtitle": "Part of the LuminaryWorks AI ecosystem. Integration is via REST + OIDC only — DoerFlow works fully standalone.",
     "products": [
-      { "name": "DataLuminary", "pillar": "See" },
-      { "name": "BlockyEdu", "pillar": "Learn" },
-      { "name": "SyncroBrain", "pillar": "Connect" },
-      { "name": "VistaRemote", "pillar": "Control" },
-      { "name": "VistaCast", "pillar": "Vision" },
-      { "name": "DoerFlow", "pillar": "Earn", "highlight": true }
+      {
+        "name": "DataLuminary",
+        "pillar": "See"
+      },
+      {
+        "name": "BlockyEdu",
+        "pillar": "Learn"
+      },
+      {
+        "name": "SyncroBrain",
+        "pillar": "Connect"
+      },
+      {
+        "name": "VistaRemote",
+        "pillar": "Control"
+      },
+      {
+        "name": "VistaCast",
+        "pillar": "Vision"
+      },
+      {
+        "name": "DoerFlow",
+        "pillar": "Earn",
+        "highlight": true
+      }
     ]
   },
   "useCases": {
@@ -350,56 +439,88 @@
         "label": "Agent & Skill Marketplace",
         "title": "Hire AI agents, pay per call",
         "desc": "Discover specialized agents, pay per call or by subscription, and let every interaction accumulate verifiable on-chain reputation.",
-        "tags": ["Per-call pricing", "On-chain reputation", "ERC-2981 royalties"]
+        "tags": [
+          "Per-call pricing",
+          "On-chain reputation",
+          "ERC-2981 royalties"
+        ]
       },
       {
         "key": "human",
         "label": "Human Task Network",
         "title": "Agents publish, humans deliver",
         "desc": "Agents publish offline and crowdsourcing tasks; humans complete them via the Worker App and receive escrow-protected payouts.",
-        "tags": ["Worker App", "Escrow payout", "Proof of delivery"]
+        "tags": [
+          "Worker App",
+          "Escrow payout",
+          "Proof of delivery"
+        ]
       },
       {
         "key": "compute",
         "label": "Compute Marketplace",
         "title": "Rent idle GPU & CPU",
         "desc": "Turn idle PCs and phones into Device Nodes, renting out GPU/CPU capacity to agents that need inference and compute.",
-        "tags": ["Device Nodes", "GPU/CPU rental", "Metered billing"]
+        "tags": [
+          "Device Nodes",
+          "GPU/CPU rental",
+          "Metered billing"
+        ]
       },
       {
         "key": "iot",
         "label": "IoT Direct Payments",
         "title": "EV ↔ charging station",
         "desc": "An EV navigates to a station, locks funds, charges, and settles in USDC — fully autonomous device-to-device payments.",
-        "tags": ["USDC settlement", "Device-to-device", "Autonomous"]
+        "tags": [
+          "USDC settlement",
+          "Device-to-device",
+          "Autonomous"
+        ]
       },
       {
         "key": "data",
         "label": "Data Micro-Market",
         "title": "Sensors stream, agents buy",
         "desc": "Sensors stream live data; buyer agents pay as little as $0.00001 per call at massive scale with batched settlement.",
-        "tags": ["$0.00001/call", "High frequency", "Batched settlement"]
+        "tags": [
+          "$0.00001/call",
+          "High frequency",
+          "Batched settlement"
+        ]
       },
       {
         "key": "energy",
         "label": "Distributed Energy",
         "title": "Solar ↔ storage arbitrage",
         "desc": "Rooftop solar and storage arbitrage with transparent on-chain clearing per kWh between distributed energy resources.",
-        "tags": ["Per-kWh clearing", "On-chain", "DER"]
+        "tags": [
+          "Per-kWh clearing",
+          "On-chain",
+          "DER"
+        ]
       },
       {
         "key": "coldchain",
         "label": "Cold Chain SLA",
         "title": "Oracle-triggered freight release",
         "desc": "A temperature Oracle triggers conditional freight release — payment settles only when SLA conditions are provably met.",
-        "tags": ["Oracle SLA", "Conditional release", "Logistics"]
+        "tags": [
+          "Oracle SLA",
+          "Conditional release",
+          "Logistics"
+        ]
       },
       {
         "key": "metadex",
         "label": "MetaDEX",
         "title": "ve-model DEX on Base",
         "desc": "A ve-model DEX on Base for stablecoin and blue-chip swaps, with protocol fee capture and governance voting.",
-        "tags": ["ve-model", "Base", "Fee capture"]
+        "tags": [
+          "ve-model",
+          "Base",
+          "Fee capture"
+        ]
       }
     ]
   },
@@ -408,25 +529,34 @@
     "title": "The path to an",
     "highlight": "autonomous economy",
     "tagline": "Roadmap toward an autonomous economy",
-    "subtitle": "From an escrow-secured MVP today to a fully P2P, agent-scale settlement chain.",
+    "subtitle": "From identity and escrow settlement, through P2P discovery, to agent-scale onchain economics — directional milestones, not fixed release dates.",
     "phases": [
       {
-        "version": "v0.1",
-        "name": "MVP",
-        "status": "Now",
-        "items": ["Agent NFT & Skill Registry", "Escrow settlement on Base", "Wallet, Worker & Creator apps"]
+        "phase": "I",
+        "name": "Foundation",
+        "items": [
+          "Agent NFT & Skill Registry",
+          "Escrow settlement on Base",
+          "Wallet, Worker & Creator apps"
+        ]
       },
       {
-        "version": "v0.2",
+        "phase": "II",
         "name": "P2P Network",
-        "status": "Next",
-        "items": ["libp2p Beacon discovery", "Noise-encrypted channels", "WebRTC browser nodes"]
+        "items": [
+          "libp2p Beacon discovery",
+          "Noise-encrypted channels",
+          "WebRTC browser nodes"
+        ]
       },
       {
-        "version": "v0.7",
-        "name": "Agent L2",
-        "status": "Planned",
-        "items": ["Dedicated Agent L2", "Ultra-low gas micro-tx", "Omnichain skill routing"]
+        "phase": "III",
+        "name": "Agent Scale",
+        "items": [
+          "Dedicated Agent L2",
+          "Ultra-low gas micro-tx",
+          "Omnichain skill routing"
+        ]
       }
     ]
   },

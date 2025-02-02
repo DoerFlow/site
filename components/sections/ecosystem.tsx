@@ -15,6 +15,15 @@ import { COLORS } from "@/lib/theme"
 
 const { Title, Text } = Typography
 
+const PRODUCT_LINKS = [
+  "https://dataluminary.dev",
+  "https://blockyedu.com",
+  "https://syncrobrain.com",
+  "https://remote.vistacast.dev",
+  "https://vistacast.dev",
+  "https://doerflow.dev",
+] as const
+
 const PRODUCT_ICONS = [
   <EyeOutlined key="see" />,
   <ReadOutlined key="learn" />,
@@ -39,45 +48,58 @@ export function Ecosystem() {
       />
 
       <Row gutter={[20, 20]}>
-        {products.map((p, i) => (
-          <Col xs={12} sm={8} lg={4} key={p.name}>
-            <Reveal delay={(i % 6) * 0.06}>
-              <Card
-                className="df-glass df-glass-hover"
-                variant="borderless"
+        {products.map((p, i) => {
+          const href = PRODUCT_LINKS[i]
+          const card = (
+            <Card
+              className="df-glass df-glass-hover"
+              variant="borderless"
+              style={{
+                height: "100%",
+                textAlign: "center",
+                borderColor: p.highlight ? "rgba(0,212,170,0.45)" : COLORS.border,
+                background: p.highlight
+                  ? "linear-gradient(180deg, rgba(0,212,170,0.14), rgba(20,27,45,0.7))"
+                  : undefined,
+              }}
+              styles={{ body: { padding: 20 } }}
+            >
+              <div
                 style={{
-                  height: "100%",
-                  textAlign: "center",
-                  borderColor: p.highlight ? "rgba(0,212,170,0.45)" : COLORS.border,
-                  background: p.highlight
-                    ? "linear-gradient(180deg, rgba(0,212,170,0.14), rgba(20,27,45,0.7))"
-                    : undefined,
+                  fontSize: 26,
+                  color: p.highlight ? COLORS.primary : COLORS.muted,
+                  marginBottom: 10,
                 }}
-                styles={{ body: { padding: 20 } }}
               >
-                <div
-                  style={{
-                    fontSize: 26,
-                    color: p.highlight ? COLORS.primary : COLORS.muted,
-                    marginBottom: 10,
-                  }}
-                >
-                  {PRODUCT_ICONS[i]}
-                </div>
-                <Title level={5} style={{ margin: "0 0 6px", fontSize: 15, color: COLORS.text }}>
-                  {p.name}
-                </Title>
+                {PRODUCT_ICONS[i]}
+              </div>
+              <Title level={5} style={{ margin: "0 0 6px", fontSize: 15, color: COLORS.text }}>
+                {p.name}
+              </Title>
+              {p.highlight ? (
+                <Tag color="cyan" style={{ margin: 0, background: "rgba(0,212,170,0.14)", borderColor: "rgba(0,212,170,0.4)", color: COLORS.primary }}>
+                  {p.pillar}
+                </Tag>
+              ) : (
+                <Text style={{ color: COLORS.muted, fontSize: 12 }}>{p.pillar}</Text>
+              )}
+            </Card>
+          )
+
+          return (
+            <Col xs={12} sm={8} lg={4} key={p.name}>
+              <Reveal delay={(i % 6) * 0.06}>
                 {p.highlight ? (
-                  <Tag color="cyan" style={{ margin: 0, background: "rgba(0,212,170,0.14)", borderColor: "rgba(0,212,170,0.4)", color: COLORS.primary }}>
-                    {p.pillar}
-                  </Tag>
+                  card
                 ) : (
-                  <Text style={{ color: COLORS.muted, fontSize: 12 }}>{p.pillar}</Text>
+                  <a href={href} target="_blank" rel="noopener noreferrer" style={{ display: "block", color: "inherit", textDecoration: "none" }}>
+                    {card}
+                  </a>
                 )}
-              </Card>
-            </Reveal>
-          </Col>
-        ))}
+              </Reveal>
+            </Col>
+          )
+        })}
       </Row>
     </section>
   )

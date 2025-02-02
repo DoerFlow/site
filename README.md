@@ -1,4 +1,4 @@
-# DoerFlow Official Website
+﻿# DoerFlow Official Website
 
 DoerFlow 品牌官网，部署域名 **[doerflow.dev](https://doerflow.dev)**。
 
@@ -42,3 +42,7 @@ pnpm build  # 输出到 out/
 
 - 各语言独立 URL + `generateMetadata` + `hreflang`
 - `app/sitemap.ts`、`app/robots.ts` 随构建生成
+
+## License
+
+[Polyform Noncommercial License 1.0.0](LICENSE) (Polyform-NC). Non-commercial use permitted. Commercial use requires a separate license from DoerFlow.

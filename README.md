@@ -27,16 +27,24 @@ pnpm build  # 输出到 out/
 
 ## 部署（Cloudflare Pages）
 
-`main` 分支 push 后由 `.github/workflows/deploy.yml` 自动构建并发布。
+`main` 分支 push 后由 [`.github/workflows/deploy.yml`](.github/workflows/deploy.yml) 自动：`pnpm build` → `out/` → **production** 发布到 [doerflow-site](https://dash.cloudflare.com/af0e854078b49637d63673c75566906b/pages/view/doerflow-site)（`https://doerflow-site.pages.dev`，无分支前缀）。
 
-### 一次性配置
+### Secrets
 
-1. 在 [Cloudflare Pages](https://dash.cloudflare.com/) 创建项目 `doerflow-site`（或通过首次 `wrangler pages deploy` 自动创建）
-2. 在 GitHub 仓库 `doerflow/site` → Settings → Secrets 添加：
-   - `CLOUDFLARE_API_TOKEN` — Pages Edit 权限
-   - `CLOUDFLARE_ACCOUNT_ID` — Cloudflare 账户 ID
-3. 在 Cloudflare DNS 将 `doerflow.dev` 绑定到 Pages 项目（Custom domains）
-4. 构建产物目录：`out`（Next.js 静态导出）
+在 [组织 Actions secrets](https://github.com/organizations/doerflow/settings/secrets/actions) 配置即可，**不必**在 `site` 仓再配一份。需包含：
+
+| Secret | 说明 |
+|--------|------|
+| `CLOUDFLARE_API_TOKEN` | Account · Cloudflare Pages · Edit |
+| `CLOUDFLARE_ACCOUNT_ID` | `af0e854078b49637d63673c75566906b` |
+
+组织 secret 的 Repository access 须包含 `doerflow/site`（All repositories，或 Selected 勾选 site）。
+
+### 其它
+
+- 自定义域：`doerflow.dev` / `www` 绑到该 Pages 项目（或 MetaRepo `.\scripts\setup-doerflow-dns.ps1`）
+- 手动触发：Actions → **Deploy site to Cloudflare Pages** → Run workflow
+- 本地：`pnpm build && npx wrangler pages deploy out --project-name=doerflow-site`（不要加 `--branch`，否则会变成预览部署）
 
 ### SEO
 

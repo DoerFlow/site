@@ -1,5 +1,13 @@
 name: Deploy site to Cloudflare Pages
 
+# Production: https://doerflow-site.pages.dev (no branch prefix)
+# Custom domain: doerflow.dev
+# Project: https://dash.cloudflare.com/af0e854078b49637d63673c75566906b/pages/view/doerflow-site
+#
+# Secrets (org or repo — org-level is enough if granted to this repo):
+#   CLOUDFLARE_API_TOKEN  — Account · Cloudflare Pages · Edit
+#   CLOUDFLARE_ACCOUNT_ID — Cloudflare account ID
+
 on:
   push:
     branches: [main]
@@ -24,8 +32,24 @@ jobs:
 
       - uses: actions/setup-node@v4
         with:
-          node-version: 20
+          node-version: 22
           cache: pnpm
+
+      - name: Check Cloudflare secrets
+        env:
+          CLOUDFLARE_API_TOKEN: ${{ secrets.CLOUDFLARE_API_TOKEN }}
+          CLOUDFLARE_ACCOUNT_ID: ${{ secrets.CLOUDFLARE_ACCOUNT_ID }}
+        run: |
+          missing=0
+          if [ -z "$CLOUDFLARE_API_TOKEN" ]; then
+            echo "::error::Missing CLOUDFLARE_API_TOKEN (org or repo secret). Grant the org secret to doerflow/site at https://github.com/organizations/doerflow/settings/secrets/actions"
+            missing=1
+          fi
+          if [ -z "$CLOUDFLARE_ACCOUNT_ID" ]; then
+            echo "::error::Missing CLOUDFLARE_ACCOUNT_ID (org or repo secret)."
+            missing=1
+          fi
+          exit $missing
 
       - name: Install
         run: pnpm install --frozen-lockfile
@@ -35,9 +59,12 @@ jobs:
         env:
           NODE_ENV: production
 
-      - name: Publish to Cloudflare Pages
+      # No --branch: production deploy → doerflow-site.pages.dev (not main.doerflow-site.pages.dev)
+      - name: Publish to Cloudflare Pages (production)
         uses: cloudflare/wrangler-action@v3
         with:
           apiToken: ${{ secrets.CLOUDFLARE_API_TOKEN }}
           accountId: ${{ secrets.CLOUDFLARE_ACCOUNT_ID }}
-          command: pages deploy out --project-name=doerflow-site --branch=main
+          packageManager: npm
+          wranglerVersion: "4.20.0"
+          command: pages deploy out --project-name=doerflow-site
